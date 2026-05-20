@@ -49,3 +49,4 @@ class Laser(RoomObject):
             self.room.astronaut_shot.play()
             self.room.delete_object(other)
             self.room.score.update_score(-10)
+        self.room.delete_object(self)
