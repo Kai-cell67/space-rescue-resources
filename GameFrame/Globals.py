@@ -15,7 +15,7 @@ class Globals:
     window_name = 'Space Rescue'
 
     # - Set the order of the rooms - #
-    levels = ["WelcomeScreen", "GamePlay"]
+    levels = ["WelcomeScreen", "Instructions", "SelectDifficulty", "GamePlay", "GameOver"]
 
     # - Set the starting level - #
     start_level = 0
@@ -37,3 +37,10 @@ class Globals:
 
     total_count = 0
     destroyed_count = 0
+
+    # - Stores the selected difficulty: "easy", "medium", or "hard" - #
+    # - Set by SelectDifficulty room, read by Zork when spawning objects - #
+    difficulty = "medium"
+
+    # - True on the very first play; set to False after instructions are shown - #
+    first_play = True

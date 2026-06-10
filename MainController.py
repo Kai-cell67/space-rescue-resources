@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import sys
+import importlib
 import pygame
 from GameFrame import Globals
 
@@ -28,10 +29,10 @@ while Globals.running:
     curr_level = Globals.next_level
     Globals.next_level += 1
     Globals.next_level %= len(levels)
-    mod_name = f"Rooms.{levels[curr_level]}"
-    mod = __import__(mod_name)
-    class_name = getattr(mod, levels[curr_level])
-    room = class_name(screen, joysticks)
+    
+    mod = importlib.import_module(f"Rooms.{levels[curr_level]}")
+    room_class = getattr(mod, levels[curr_level])
+    room = room_class(screen, joysticks)
     exit_val = room.run()
 
     if exit_val is True or Globals.running is False:
